@@ -20,20 +20,22 @@ export const contactSlice = createSlice({
           console.error("user does not exist");
         }
       },
-      deleteUser: (state, action: PayloadAction<{ id: string }>) => {
+      deleteUser: (state, action: PayloadAction<{ id: any }>) => {
         const idToDelete = action.payload.id;
         state.contact = state.contact.filter((user) => user.id !== idToDelete);
       },
       editUser: (
         state,
-        action: PayloadAction<{ id: string; firstName: string; lastName: string; active: string }>
+        action: PayloadAction<{ id: any; firstName: any; lastName: any; email: any; phone: any; status: any }>
       ) => {
-        const { id, firstName, lastName, active } = action.payload;
+        const { id, firstName, lastName,email, phone, status } = action.payload;
         const userToEdit = state.contact.find((user) => user.id === id);
         if (userToEdit) {
           userToEdit.firstName = firstName;
           userToEdit.lastName = lastName;
-          userToEdit.active = active;
+          userToEdit.email = email;
+          userToEdit.phone = phone;
+          userToEdit.status = status;
         } else {
           console.error("user does not exist");
         }

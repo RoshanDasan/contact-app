@@ -1,11 +1,12 @@
-import React from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 import { setUser } from '../../state/stateManage';
-import './AddContact.css'
+import './AddContact.css';
 
 interface FormValues {
+  phone: string;
+  email: string;
   firstName: string;
   lastName: string;
   status: string;
@@ -18,6 +19,8 @@ const MyForm = () => {
     initialValues: {
       firstName: '',
       lastName: '',
+      email: '',
+      phone: '',
       status: 'active',
     },
     validate: (values: FormValues) => {
@@ -29,6 +32,12 @@ const MyForm = () => {
 
       if (!values.lastName) {
         errors.lastName = 'Last Name is Required';
+      }
+      if (!values.email) {
+        errors.email = 'Email is Required';
+      }
+      if (!values.phone) {
+        errors.phone = 'Phone is Required';
       }
 
       return errors;
@@ -68,6 +77,33 @@ const MyForm = () => {
           className="inputField"
           name="lastName"
           value={formik.values.lastName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.email && formik.errors.email && (
+          <div className="error">{formik.errors.email}</div>
+        )}
+
+        <input
+          type="text"
+          placeholder="Email"
+          className="inputField"
+          name="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+
+        {formik.touched.phone && formik.errors.phone && (
+          <div className="error">{formik.errors.phone}</div>
+        )}
+
+        <input
+          type="text"
+          placeholder="Phone"
+          className="inputField"
+          name="phone"
+          value={formik.values.phone}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
         />
