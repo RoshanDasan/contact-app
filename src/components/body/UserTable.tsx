@@ -5,26 +5,34 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useSelector } from 'react-redux';
+import {useState, useEffect} from 'react'
+import { Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { deleteUser } from '../../state/stateManage';
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 export default function UserTable() {
+  const [users, setUsers] = useState([])
+  const userData = useSelector((state:any) => state.contact)
+  const dispatch = useDispatch()
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteUser({
+      id
+    }))
+  }
+
+
+useEffect(() => {
+  setUsers(userData)
+  
+},[handleDelete])
+
+
+
+  
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -38,18 +46,18 @@ export default function UserTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {users.map((user: any) => (
             <TableRow
-              key={row.name}
+              key={user.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell >{row.calories}</TableCell>
-              <TableCell >{row.fat}</TableCell>
-              <TableCell >{row.carbs}</TableCell>
-              <TableCell >{row.protein}</TableCell>
+             
+              <TableCell >{user.firstName}</TableCell>
+              <TableCell >{user.lastName}</TableCell>
+              {user.status == 'active'? <TableCell sx={{color: 'green'}}>{user.status}</TableCell> : <TableCell sx={{color: 'red'}}>{user.status}</TableCell>}
+              
+              <Button color='primary'>Edit</Button>
+              <Button color='warning' onClick={() => handleDelete(user.id)}>Delete</Button>
             </TableRow>
           ))}
         </TableBody>

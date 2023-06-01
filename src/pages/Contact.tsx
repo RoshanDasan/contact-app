@@ -3,6 +3,7 @@ import {useState} from 'react'
 import Box, { BoxProps } from '@mui/material/Box';
 import { Button } from '@mui/material';
 import UserTable from '../components/body/UserTable';
+import AddContact from '../components/body/AddContact';
 
 function Item(props: BoxProps) {
   const { sx, ...other } = props;
@@ -53,7 +54,12 @@ export default function Contact() {
         <Button onClick={handleCreateContact}>add contact</Button>
       </Box>  
 
+        {display?(
         <UserTable />
+
+        ):(
+          <AddContact />
+        )}
 
     </div>
   );
