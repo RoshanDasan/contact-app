@@ -35,11 +35,6 @@ export default function ContactMain(props: Props) {
     const navigate = useNavigate()
 
 
-    function handleSidebar(text: string): void {
-        console.log(text);
-       
-    }
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };

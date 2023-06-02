@@ -27,13 +27,24 @@ const style = {
 export default function UserTable() {
   const userData = useSelector((state: any) => state.contact);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false); // state for modal open
+  const [users, setUsers] = useState([]); // state for set user in users to loop
+  const [editUsers, setEditUser] = useState({ 
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    status: '',
+  }); // state for get the user for update
 
+  // function for handle delete operation of contact
   const handleDelete = (id: any) => {
     dispatch(deleteUser({ id }));
     toast.success('User deleted successfully');
   };
 
-  const [open, setOpen] = useState(false);
+  // function for controll modal
   const handleOpen = (id: any) => {
     const user: any = userData.find((user: any) => user.id === id);
     setEditUser(user);
@@ -41,20 +52,14 @@ export default function UserTable() {
   };
   const handleClose = () => setOpen(false);
 
+  // useEffect hook for insert user in state
   useEffect(() => {
     setUsers(userData);
   }, [userData]);
 
-  const [users, setUsers] = useState([]);
-  const [editUsers, setEditUser] = useState({
-    id: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    status: '',
-  });
 
+
+  // submit function for handle edit contact
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const { id, firstName, lastName, email, phone, status } = editUsers;
@@ -62,6 +67,7 @@ export default function UserTable() {
     setOpen(false);
     console.log(editUsers);
 
+    // dispatch user for edit
     dispatch(
       editUser({
         id,

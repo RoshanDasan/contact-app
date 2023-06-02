@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useQuery } from 'react-query';
 
+
+// query data of world
 export const useWorldData = () => {
   return useQuery('worldData', async () => {
     const response = await axios.get('https://disease.sh/v3/covid-19/all');
@@ -8,6 +10,7 @@ export const useWorldData = () => {
   });
 };
 
+// query data by contries
 export const useCountryData = () => {
   return useQuery('countryData', async () => {
     const response = await axios.get('https://disease.sh/v3/covid-19/countries');
@@ -17,6 +20,7 @@ export const useCountryData = () => {
   });
 };
 
+// query data counts of death cased and living cased
 export const useGraphData = () => {
   return useQuery('graphData', async () => {
     const response = await axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all');

@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { setUser } from '../../state/stateManage';
 import './AddContact.css';
 
+// interface for form data
 interface FormValues {
   phone: string;
   email: string;
@@ -15,6 +16,8 @@ interface FormValues {
 
 const MyForm = () => {
   const dispatch = useDispatch();
+
+  // formik function for validation
   const formik = useFormik<FormValues>({
     initialValues: {
       firstName: '',
@@ -43,11 +46,12 @@ const MyForm = () => {
       return errors;
     },
 
+    // onsubmit funcion for further insertion
     onSubmit: (values) => {
       const objectId = uuid();
       values.id = objectId;
       console.log(values);
-      dispatch(setUser({ contact: values }));
+      dispatch(setUser({ contact: values })); // dispatch user for insert contact into redux
       formik.resetForm(); // Clear input fields after dispatching
     },
   });

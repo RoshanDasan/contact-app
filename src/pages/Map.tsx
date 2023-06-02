@@ -10,9 +10,10 @@ const PieGraph = () => {
   const [countries, setCountries] = useState([]);
   const [graphDatas, setGraphData] = useState([]);
 
-  const { data: countryData, isLoading: isCountryDataLoading, error: countryDataError } = useCountryData();
-  const { data: graphData, isLoading: isGraphDataLoading, error: graphDataError } = useGraphData();
+  const { data: countryData, isLoading: isCountryDataLoading, error: countryDataError } = useCountryData(); // fetching data based on contries to create map
+  const { data: graphData, isLoading: isGraphDataLoading, error: graphDataError } = useGraphData(); // fetching data counts for line graph
 
+  // useEffect for insert fetched data to useState
   useEffect(() => {
 
     if (graphData) {
@@ -70,18 +71,12 @@ const PieGraph = () => {
     );
   };
 
-  // if (loading) {
-  //   return (
-  //     <div style={{display: 'flex'}}>
-  //       <Skeleton variant="rectangular" width={500} height={400} animation="wave" style={{margin: '30px 30px 30px 30px'}}/>
-  //       <Skeleton variant="rectangular" width={500} height={400} animation="wave" style={{margin: '30px 50px 50px 30px'}}/>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div style={{ display: 'flex' }}>
       {!isGraphDataLoading ? (
+
+        // line graph chart
         <div style={{ flex: '1' }}>
           <LineChart width={500} height={400} data={graphDatas}>
             <CartesianGrid strokeDasharray="10 10" />
@@ -100,7 +95,8 @@ const PieGraph = () => {
       )}
 
       {!isCountryDataLoading ? (
-        <div style={{ flex: '1', margin: '20px', maxHeight: '400px', overflowY: 'scroll' }}>
+        // map chart
+        <div style={{ flex: '1', margin: '20px', maxHeight: '400px', overflowY: 'scroll' }}> 
           <MapContainer center={[0, 0]} zoom={2} style={{ height: '100%', width: '100%' }}>
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
