@@ -32,14 +32,10 @@ interface Props {
 export default function MapMain(props: Props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [page, setPage] = useState('contact')
     const navigate = useNavigate()
 
 
-    function handleSidebar(text: string): void {
-        console.log(text);
-        setPage(text)
-    }
+
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);

@@ -10,8 +10,8 @@ const PieGraph = () => {
   const [countries, setCountries] = useState([]);
   const [graphDatas, setGraphData] = useState([]);
 
-  const { data: countryData, isLoading: isCountryDataLoading, error: countryDataError } = useCountryData(); // fetching data based on contries to create map
-  const { data: graphData, isLoading: isGraphDataLoading, error: graphDataError } = useGraphData(); // fetching data counts for line graph
+  const { data: countryData, isLoading: isCountryDataLoading } = useCountryData(); // fetching data based on contries to create map
+  const { data: graphData, isLoading: isGraphDataLoading } = useGraphData(); // fetching data counts for line graph
 
   // useEffect for insert fetched data to useState
   useEffect(() => {

@@ -31,7 +31,6 @@ interface Props {
 export default function ContactMain(props: Props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [page, setPage] = useState('contact')
     const navigate = useNavigate()
 
 
