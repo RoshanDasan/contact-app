@@ -23,8 +23,9 @@ Getting Started
 
 Follow the instructions below to set up the project locally:
 
-    Clone the repository:
-     
+   Clone the repository:
+   
+     https://github.com/RoshanDasan/contact-app.git
      yarn install
      yarn dev
      
@@ -54,7 +55,9 @@ Getting Started
 
 Follow the instructions below to set up the project locally:
 
-    Clone the repository:
+   Clone the repository:
+    
+    https://github.com/RoshanDasan/contact-app.git
 
     bash
 
@@ -70,9 +73,12 @@ Start the development server:
 
 bash
 
-    yarn dev
+   yarn dev
 
-    Access the application by visiting http://localhost:5173 in your browser.
+   Access the application by visiting in your browser.
+    
+    
+     http://localhost:5173
 
 Usage
 
@@ -96,7 +102,7 @@ License
 This project is licensed under the MIT License.
 Acknowledgements
 
-    React
+   React
     Vite
     TypeScript
     Redux
