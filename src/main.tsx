@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import App from './App';
 import contactReducer from './state/stateManage';
 import { configureStore } from '@reduxjs/toolkit';

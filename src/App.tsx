@@ -1,4 +1,4 @@
-import './App.css';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ContactMain from './components/view/ContactMain';
 import MapMain from './components/view/MapMain';
