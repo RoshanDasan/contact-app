@@ -1,4 +1,4 @@
-Project Name
+CONTACT_APP
 
 This project is a React application developed using React, Vite, TypeScript, and Redux. It provides a comprehensive solution that fulfills the objectives outlined for the Objective Page Contacts and Objective Page Charts and Maps.
 Features
@@ -29,8 +29,7 @@ Follow the instructions below to set up the project locally:
      yarn install
      yarn dev
      
- 2 / 2
-Project Name
+CONTACT_APP
 
 This project is a React application developed using React, Vite, TypeScript, and Redux. It provides a comprehensive solution that fulfills the objectives outlined for the Objective Page Contacts and Objective Page Charts and Maps.
 Features
